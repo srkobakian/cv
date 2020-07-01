@@ -1,0 +1,111 @@
+---
+name: Stephanie Kobakian
+qualifications: BCom, BEco
+email: srkobakian@outlook.com
+github: srkobakian
+phone: 0433 699 797
+headcolor: "165331"
+aboutme: ""
+date: "`r format(Sys.time(), '%B %Y')`"
+output: 
+  vitae::moderncv:
+    theme: banking
+---
+
+```{r setup, include=FALSE}
+library(vitae)
+knitr::opts_chunk$set(echo = FALSE, 
+                      warning = FALSE,
+                      message = FALSE)
+```
+
+```{r getdata, include=FALSE}
+## Education
+load(here::here("data", "education.rda"))
+
+# Experience
+
+## Jobs
+load(here::here("data", "jobs.rda"))
+load(here::here("data", "internship.rda"))
+## Teaching
+load(here::here("data", "teaching.rda"))
+load(here::here("data", "talks.rda"))
+load(here::here("data", "pkgs.rda"))
+load(here::here("data", "workshops.rda"))
+load(here::here("data", "awards.rda"))
+```
+
+# Education 
+
+```{r}
+education %>% 
+detailed_entries(when = dates,
+                 what = degree,
+                 where = loc,
+                 with = uni,
+                 why = details)
+
+```
+
+# Work Experience
+
+
+```{r}
+jobs %>% 
+  detailed_entries(role, dates, company, loc, details)
+
+## internship
+internship %>% 
+  detailed_entries(role, dates, company, loc, details)
+```
+
+
+## Teaching Associate
+
+
+```{r teachexp} 
+# Experience
+
+#My teaching quality at Monash University has been consistently recognised with positive student evaluations and individual praise from my students.
+#In addition to sessional teaching, I have taught data analysis skills and R to high school students at Monash workshops.
+
+
+## Teaching
+teaching %>% 
+  detailed_entries(role, dates, uni, campus, details)
+
+```
+
+
+## Workshop assistant
+
+```{r}
+# Experience
+workshops  %>% 
+  detailed_entries(with = event, when = dates, where = loc, what = details)
+
+```
+
+# Authored Software
+
+```{r}
+## pkgs
+pkgs
+```
+
+# Presentations
+
+```{r}
+## Talks
+talks 
+```
+
+
+# Awards
+
+```{r}
+awards %>% 
+  detailed_entries(what, when, with, where, why)
+```
+

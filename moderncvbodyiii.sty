@@ -100,7 +100,7 @@
   \setlength{\parskip}{0\p@}}
 
 \RenewDocumentCommand{\section}{sm}{%
-  \par\addvspace{2.5ex}%
+  \par\addvspace{0.5ex}%
   \phantomsection{}% reset the anchor for hyperrefs
   \addcontentsline{toc}{section}{#2}%
   \if@left\else\if@fullrules\else\if@mixedrules\else%
@@ -152,7 +152,7 @@
   \begin{minipage}[t]{\doubleitemcolumnwidth}\ifthenelse{\equal{#4}{}}{}{\hintstyle{#4}: }#5\end{minipage}%
   \par\addvspace{#1}}
 
-\renewcommand*{\cvlistitem}[2][.25em]{%
+\renewcommand*{\cvlistitem}[2][1.25em]{%
   \listitemsymbol\begin{minipage}[t]{\listitemcolumnwidth}#2\end{minipage}%
   \par\addvspace{#1}}
 
@@ -163,6 +163,7 @@
     {}%
     {\listitemsymbol\begin{minipage}[t]{\listdoubleitemcolumnwidth}#3\end{minipage}}}}
 
+% Space between main items in work experience list
 \renewcommand*{\cventry}[7][.25em]{
   \begin{tabular*}{\maincolumnwidth}{l@{\extracolsep{\fill}}r}%
     {\bfseries #4} & {\bfseries #5}\\%

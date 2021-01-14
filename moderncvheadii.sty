@@ -150,7 +150,7 @@
     \flushmakeheaddetails}\fi% need to force a \par after this to avoid weird spacing bug at the first section if no blank line is left after \makehead
   % optional title
   \ifthenelse{\equal{\@title}{}}{}{%
-    \\[1.25em]\null% \null is required as there is no box on the line after \\, so glue such as \hfill (and leaders) disappear; this is in contrast to after \par, where the next line starts with an indent box (even after \noindent)
+    \\[0.25em]\null% \null is required as there is no box on the line after \\, so glue such as \hfill (and leaders) disappear; this is in contrast to after \par, where the next line starts with an indent box (even after \noindent)
     \if@right\hfill\fi%
     \if@alternate%
       \titlestyle{\MakeLowercase\@title}%
@@ -164,7 +164,7 @@
       \begin{minipage}{\quotewidth}%
         \centering%
         \quotestyle{\@quote}%
-      \end{minipage}\hfill\null\\[2.5em]}}%
+      \end{minipage}\hfill\null\\[0.5em]}}%
   \par}% to avoid weird spacing bug at the first section if no blank line is left after \maketitle
 
 

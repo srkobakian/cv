@@ -235,7 +235,7 @@ awards <- tribble(
   ~ what,
   ~ when,
   ~ where,
-  ~ with,
+  ~ with,loc
   ~ why,
   "Championship Team",
   "2018",

@@ -46,20 +46,23 @@ tribble(
   "Master of Philosophy (Statistics)",
   "Brisbane, Australia",
   "Queensland University of Technology",
-  "A New Algorithm For Effectively Visualising Australian Spatio-Temporal Disease Data.",
+  "A New Algorithm For Effectively Visualising Australian Spatio-Temporal Disease Data",
   
   "2014 - 2017",
   "Bachelor of Commerce and Bachelor of Economics",
   "Melbourne, Australia",
   "Monash University",
-  "Majors in Econometrics and Business Modelling",
+  "Majors: Econometrics and Business Modelling",
 ) %>% 
-detailed_entries(when = when,
-                 what = what,
-                 where = where,
-                 with = with,
-                 why = why)
-
+  brief_entries(
+    glue::glue("\\textbf{<what>} \\newline \\textit{<with>}, <where>  \\newline \\small{<why>}",
+               .open = "<", .close = ">"), when, .protect = FALSE)
+# %>% 
+# detailed_entries(when = when,
+#                  what = what,
+#                  where = where,
+#                  with = with,
+#                  why = why)
 ```
 
 # Publication
@@ -81,20 +84,20 @@ tribble(
   "Jan. 2019 - Present",
   "R Consortium",
   "",
-  c("Proofread submissions for issue publication,",
+  c("Proofread submissions for issue publication",
     "Write R functions to automate initial checks of submissions"),
  
   "Research assistant to Prof. Dianne Cook",
   "Jan. 2016 - Present",
   "Monash University",
   "Clayton, Australia",
-  "Develop the taipan R package to create Shiny Applications that produce tidy data sets from image based surveys.",
+  "Develop the taipan R package to create Shiny Applications that produce tidy data sets from image based surveys",
   
   "Data scientist",
   "Jan. 2019 - Present",
   "WhyHive",
   "Remote, Australia",
-  "Perform data cleaning and generate data visualisations for a variety of clients, including substantial spatio-temporal visualisations."
+  "Perform data cleaning and generate data visualisations for a variety of clients, including substantial spatio-temporal visualisations"
   ) %>% 
 detailed_entries(what, 
                  when, 
@@ -152,7 +155,7 @@ tribble(
   "ETC5510: Introduction to data analysis, S1 2020",
   "ETC5513: Collaborative and reproducible practices, S1 2020",
   "ETC5512: Wild-caught data, S1 2020",
-  "ETX2250: Data Visualisation and Analytics Summer 2017")
+  "ETX2250: Data Visualisation and Analytics, Summer 2017")
 ) %>% 
   detailed_entries(what, when, uni, campus, why)
 
@@ -188,6 +191,7 @@ tribble(
     when,
     .protect = FALSE
   )
+
 ```
 
 # Presentations
@@ -208,7 +212,7 @@ tribble(
   "2019",
   "An Australian alternative to choropleth maps; visualising geo-spatial disease data",
   "Alternative map displays for presenting spatial distributions in Australia",
-  "Masters symposium",
+  "Masters symposium, Queensland University of Technology",
   #"https://srkobakian-qut.netlify.app",
   "2019",
   "Maps, hexagons and life in Australia",
@@ -238,12 +242,11 @@ tribble(
   #"https://srkobakian-medascin.netlify.app"
 ) %>%
   brief_entries(glue::glue(
-    "\\textbf{<title>}: <why>",
+    "\\textit{<title>:} <why>. <with>, <when>",
     .open = "<",
     .close = ">"
-  ),
-    when,
-    .protect = FALSE) 
+  ), .protect = FALSE)
+
 ```
 
 

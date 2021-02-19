@@ -3,7 +3,6 @@ name: Stephanie Kobakian
 qualifications: BCom, BEco
 email: srkobakian@outlook.com
 github: srkobakian
-linkedin: srkobakian
 phone: 0433 699 797
 headcolor: "165331"
 aboutme: ""
@@ -21,13 +20,15 @@ knitr::opts_chunk$set(echo = FALSE,
                       message = FALSE)
 ```
 
+A critical thinker and engaged collaborator delivering business insights. I am dedicated to solving problems, using data analysis and visualisation to develop and  effectively communicate data driven solutions.
+
+
 # Technical Skills
 
 - **Programming:** R, LaTex, SQL and python
-- **Data science:** web scraping, data collection, analysis and visualisation
-- **Statistics:** generalised linear regression and additive models
+- **Data science:** web scraping, data collection, analytics and visualisation
 - **Software Development:** collaborative version control and continuous integration
-- **Communication:** conference presentations, data driven reports for commercial and non profits
+- **Communication:** conference presentations, reports for commercial and non-profits
 
 
 <!-- Prof. Kerrie Mengersen, Prof. Dianne Cook, Dr. Earl Duncan -->
@@ -65,13 +66,8 @@ tribble(
 #                  why = why)
 ```
 
-# Publication
 
-```{r software}
-bibliography_entries("publications.bib")
-```
-
-# Work Experience
+# Experience
 
 ```{r work}
 tribble(
@@ -80,24 +76,34 @@ tribble(
   ~ with, 
   ~ where, 
   ~ why,
+  "Lead Data Scientist",
+  "Jan. 2019 - Present",
+  "WhyHive",
+  "Remote",
+  c(
+    "Use R to manage data, perform high quality data cleaning, conduct statistical analysis, modelling and generate data visualisations",
+    "Create and present analytical findings in written and visual data driven research reports and presentations",
+    "Perform program evaluation and use evidence to measure and report on outcomes"
+    ), 
+  
   "Editorial Assistant for the R Journal",
   "Jan. 2019 - Present",
   "R Consortium",
   "",
   c("Proofread submissions for issue publication",
-    "Write R functions to automate initial checks of submissions"),
+    "Plan projects and set milestones to ensure objectives are achieved",
+    "Evaulate the shifting priorities of various stakeholders and adapt projects accordingly",
+    "Liase with team memebers to plan and negotiate targets",
+    "Write R functions to automate checks of submissions"),
  
   "Research assistant to Prof. Dianne Cook",
   "Jan. 2016 - Present",
   "Monash University",
-  "Clayton, Australia",
-  "Develop the taipan R package to create Shiny Applications that produce tidy data sets from image based surveys",
+  "Clayton",
+  c("Create and effectively manage project priorities",
+    "Manage hours and priorities to acheive project deadlines",
+    "Develop an R package to create Shiny Applications that produce tidy data sets from image based surveys"),
   
-  "Data scientist",
-  "Jan. 2019 - Present",
-  "WhyHive",
-  "Remote, Australia",
-  "Perform data cleaning and generate data visualisations for a variety of clients, including substantial spatio-temporal visualisations"
   ) %>% 
 detailed_entries(what, 
                  when, 
@@ -161,6 +167,12 @@ tribble(
 
 ```
 
+# Publication
+
+```{r software}
+bibliography_entries("publications.bib")
+```
+
 # Authored Software
 
 ```{r}
@@ -170,21 +182,21 @@ tribble(
   ~ when,
   ~ what,
   ~ why,
-  ~ url,
+  ~ details,
   "sugarbag",
   "2019",
   "Author",
   "Kobakian, Stephanie. 2018. sugarbag: Create Tessellated Hexagon Maps of Australia.",
-  "https://CRAN.R-project.org/package=sugarbag",
+  "Each polygon is represented by a hexagon tile, placed as close to it's original centroid as possible, with a focus on maintaining spatial relationship to a focal point",
   "taipan",
   "2018",
   "Author",
   "Kobakian, Stephanie and O'Hara-Wild, Mitchell. 2017. taipan: Tool for Annotating Images in Preparation for Analysis.",
-  "https://CRAN.R-project.org/package=taipan"
+  "Generates shiny apps for annotating images, these annotations are typically used for training and evaluating machine learning models"
 ) %>%
   brief_entries(
     glue::glue(
-      "\\textbf{<pkg>}: <what> \\newline <why> \\newline <url>",
+      "\\textbf{<pkg>}: <what>. <why> <details>",
       .open = "<",
       .close = ">"
     ),
@@ -229,20 +241,20 @@ tribble(
   "A real example of tidy data creation, highlighting the differences between variables and observations",
   "ETX2250 Data Visualisation and Analytics",
   #"https://srkobakian-medascin.netlify.app",
-  "2017",
-  "Facial Recognition",
-  "Emotions in tennis",
-  "Tennis Australia",
-  #"https://srkobakian-ta.netlify.app",
-  
+  # "2017",
+  # "Facial Recognition",
+  # "Emotions in tennis",
+  # "Tennis Australia",
+  # #"https://srkobakian-ta.netlify.app",
+  # 
   "2017",
   "Sports Analytics",
   "Emotions in tennis",
   "Wombat MeDaScIn",
   #"https://srkobakian-medascin.netlify.app"
 ) %>%
-  brief_entries(glue::glue(
-    "\\textit{<title>:} <why>. <with>, <when>",
+  brief_entries(when = when, glue::glue(
+    "\\textit{<title>:} <why>. <with>",
     .open = "<",
     .close = ">"
   ), .protect = FALSE)
@@ -262,13 +274,13 @@ tribble(
   "Championship Team",
   "2018",
   "Atlas of Living Australia",
-  "UseR!2018 Datathon Competiton",
+  "UseR!2018 Datathon",
   "A Shiny app to aid in the exploration of animals in Australia. Displaying sightings of bee species across Australia in a colourful and interactive application.",
   
   "Championship Team",
   "2016",
   "SAP University Alliances",
-  "Analytics Competiton",
+  "Analytics Competition",
   "Created an infographic presenting the state of homelessness in Australia. Recommended solutions to address the drivers of homelessness for various age groups.",
   
   "Scholarship Awardee and Internship",

@@ -55,7 +55,7 @@
 \DeclareOption{roman}{\AtBeginDocument{\renewcommand{\familydefault}{\rmdefault}}}
 
 % draft/final option
-\DeclareOption{draft}{\setlength\overfullrule{0pt}}
+\DeclareOption{draft}{\setlength\overfullrule{5pt}}
 \DeclareOption{final}{\setlength\overfullrule{0pt}}
 
 % execute default options
@@ -139,25 +139,25 @@
 \RequirePackage{fancyhdr}
 \fancypagestyle{plain}{
   \renewcommand{\headrulewidth}{0pt}
-  \renewcommand{\footrulewidth}{4pt}
+  \renewcommand{\footrulewidth}{0pt}
   \fancyhf{}}
 % page numbers in footer if more than 1 page
-% \newif\if@displaypagenumbers\@displaypagenumberstrue
-% \newcommand*{\nopagenumbers}{\@displaypagenumbersfalse}
-% \AtEndPreamble{%
-%   \AtBeginDocument{%
-%     % fancyhdr length
-%     \renewcommand{\headwidth}{\textwidth}
-%     \if@displaypagenumbers%
-%       \@ifundefined{r@lastpage}{}{%
-%         \ifthenelse{\pageref{lastpage}>1}{%
-%           \newlength{\pagenumberwidth}%
-%           \settowidth{\pagenumberwidth}{\color{color2}\addressfont\itshape\strut\thepage/\pageref{lastpage}}%
-%           \fancypagestyle{plain}{%
-%             \fancyfoot[r]{\parbox[b]{\pagenumberwidth}{\color{color2}\pagenumberfont\strut\thepage/\pageref{lastpage}}}}% the parbox is required to ensure alignment with a possible center footer (e.g., as in the casual style)
-%           \pagestyle{plain}}{}}\fi}%
-%   \AtEndDocument{\label{lastpage}}}
-% \pagestyle{plain}
+\newif\if@displaypagenumbers\@displaypagenumberstrue
+\newcommand*{\nopagenumbers}{\@displaypagenumbersfalse}
+\AtEndPreamble{%
+  \AtBeginDocument{%
+    % fancyhdr length
+    \renewcommand{\headwidth}{\textwidth}
+    \if@displaypagenumbers%
+      \@ifundefined{r@lastpage}{}{%
+        \ifthenelse{\pageref{lastpage}>1}{%
+          \newlength{\pagenumberwidth}%
+          \settowidth{\pagenumberwidth}{\color{color2}\addressfont\itshape\strut\thepage/\pageref{lastpage}}%
+          \fancypagestyle{plain}{%
+            \fancyfoot[r]{\parbox[b]{\pagenumberwidth}{\color{color2}\pagenumberfont\strut\thepage/\pageref{lastpage}}}}% the parbox is required to ensure alignment with a possible center footer (e.g., as in the casual style)
+          \pagestyle{plain}}{}}\fi}%
+  \AtEndDocument{\label{lastpage}}}
+\pagestyle{plain}
 
 % reduced list spacing
 % package providing hooks into lists
@@ -165,7 +165,7 @@
 %   modified and distributed with moderncv(not available otherwise on ctan)
 \RequirePackage{tweaklist}
 \renewcommand*{\itemhook}{%
-%  \@minipagetrue% removes spacing before lists as they use \addvspace, which doesn't add vertical space inside minipages
+  \@minipagetrue% removes spacing before lists as they use \addvspace, which doesn't add vertical space inside minipages
   \@noparlisttrue% removes spacing at end of lists, caused by \par
   \setlength{\topsep}{0pt}% normally not required thanks to \@minipagetrue
   \setlength{\partopsep}{0pt}% normally not required thanks to \@minipagetrue
@@ -198,14 +198,14 @@
 %                class definition
 %-------------------------------------------------------------------------------
 % minimal base settings
-\setlength\lineskip{1pt}
-\setlength\normallineskip{1pt}
+\setlength\lineskip{1\p@}
+\setlength\normallineskip{1\p@}
 \renewcommand\baselinestretch{}
 \setlength{\parindent}{0\p@}
 \setlength{\parskip}{0\p@}
 \setlength\columnsep{10\p@}
 \setlength\columnseprule{0\p@}
-\setlength\fboxsep{3pt}
+\setlength\fboxsep{3\p@}
 \setlength\fboxrule{.4\p@}
 \setlength\arrayrulewidth{.4\p@}
 \setlength\doublerulesep{2\p@}
@@ -263,12 +263,17 @@
 \NewDocumentCommand{\social}{O{}O{}m}{%
   \ifthenelse{\equal{#2}{}}%
     {%
-      \ifthenelse{\equal{#1}{linkedin}}{\collectionadd[linkedin]{socials}{\protect\httplink[#3]{www.linkedin.com/in/#3}}} {}%
-      \ifthenelse{\equal{#1}{xing}}    {\collectionadd[xing]{socials}    {\protect\httplink[#3]{www.xing.com/profile/#3}}}{}%
-      \ifthenelse{\equal{#1}{twitter}} {\collectionadd[twitter]{socials} {\protect\httplink[#3]{www.twitter.com/#3}}}     {}%
-      \ifthenelse{\equal{#1}{github}}  {\collectionadd[github]{socials}  {\protect\httplink[#3]{www.github.com/#3}}}      {}%
-      \ifthenelse{\equal{#1}{gitlab}}  {\collectionadd[gitlab]{socials}  {\protect\httplink[#3]{www.gitlab.com/#3}}}      {}%
-      \ifthenelse{\equal{#1}{skype}}   {\collectionadd[skype]{socials}   {#3}}                                            {}%
+      \ifthenelse{\equal{#1}{linkedin}}{\collectionadd[linkedin]{socials}{\protect\httpslink[#3]{www.linkedin.com/in/#3}}} {}%
+      \ifthenelse{\equal{#1}{xing}}    {\collectionadd[xing]{socials}    {\protect\httpslink[#3]{www.xing.com/profile/#3}}}{}%
+      \ifthenelse{\equal{#1}{twitter}} {\collectionadd[twitter]{socials} {\protect\httpslink[#3]{www.twitter.com/#3}}}     {}%
+      \ifthenelse{\equal{#1}{github}}  {\collectionadd[github]{socials}  {\protect\httpslink[#3]{www.github.com/#3}}}      {}%
+      \ifthenelse{\equal{#1}{gitlab}}  {\collectionadd[gitlab]{socials}  {\protect\httpslink[#3]{www.gitlab.com/#3}}}      {}%
+      \ifthenelse{\equal{#1}{skype}}   {\collectionadd[skype]{socials}   {#3}}                                             {}%
+      \ifthenelse{\equal{#1}{stackoverflow}}  {\collectionadd[stackoverflow]{socials} {\protect\httpslink[\SplitMyMacro#3]{stackoverflow.com/users/#3}}}      {}%
+      \ifthenelse{\equal{#1}{bitbucket}}{\collectionadd[bitbucket]{socials}{\protect\httpslink[#3]{www.bitbucket.org/#3}}}   {}%
+      \ifthenelse{\equal{#1}{orcid}}   {\collectionadd[orcid]{socials}   {\protect\httpslink[#3]{orcid.org/#3}}}   {}%
+      \ifthenelse{\equal{#1}{researchgate}}   {\collectionadd[researchgate]{socials}   {\protect\httpslink[#3]{www.researchgate.net/profile/#3}}}   {}%
+      \ifthenelse{\equal{#1}{researcherid}}   {\collectionadd[researcherid]{socials}   {\protect\httpslink[#3]{www.researcherid.com/rid/#3}}}   {}%
     }
     {\collectionadd[#1]{socials}{\protect\httplink[#3]{#2}}}}
 
@@ -311,6 +316,13 @@
 \newcommand*{\githubsocialsymbol}  {}
 \newcommand*{\gitlabsocialsymbol}  {}
 \newcommand*{\skypesocialsymbol}   {}
+\newcommand*{\bitbucketsocialsymbol} {}
+\newcommand*{\stackoverflowsocialsymbol} {}
+\newcommand*{\orcidsocialsymbol}   {}
+\newcommand*{\researchgatesocialsymbol}{}
+\newcommand*{\researchidsocialsymbol}{}
+\newcommand*{\googlescholarsocialsymbol}{}
+\newcommand*{\telegramsocialsymbol}{}
 
 % other
 %------
@@ -503,6 +515,23 @@
     {\href{http://#2}{#2}}%
     {\href{http://#2}{#1}}}
 
+% makes a https hyperlink with escaped underscore in link name
+% usage: \httpslink[optional text]{link}
+\newcommand*{\httpslink}[2][]{%
+  \ifthenelse{\equal{#1}{}}%
+    {\href{https://#2}{\expandafter\escapeunderscore\expandafter{#2}}}
+    {\href{https://#2}{\expandafter\escapeunderscore\expandafter{#1}}}
+}
+
+\ExplSyntaxOn
+\tl_new:N \l_escapeunderscore_tl
+\cs_new:Npn \escapeunderscore #1 {
+    \tl_set:Nn \l_escapeunderscore_tl {#1}
+    \regex_replace_all:nnN {\_} {_} \l_escapeunderscore_tl
+    \tl_use:N \l_escapeunderscore_tl
+}
+\ExplSyntaxOff
+
 % makes an email hyperlink
 % usage: \emaillink[optional text]{link}
 \newcommand*{\emaillink}[2][]{%
@@ -643,7 +672,7 @@
 %    {\string\bibcite{#1}{\theenumiv}}\fi\ignorespaces}% replaced "\the\value{\@listctr}" with "\theenumiv"
 
 % itemize, enumerate and description environment
-\setlength{\leftmargini}   {1em}
+\setlength{\leftmargini}   {0.5em}
 \leftmargin\leftmargini
 \setlength{\leftmarginii}  {\leftmargini}
 \setlength{\leftmarginiii} {\leftmargini}

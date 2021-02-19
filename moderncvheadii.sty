@@ -156,7 +156,7 @@
       \titlestyle{\MakeLowercase\@title}%
     \else%
       \titlestyle{\@title}\fi%
-    }\\[2.5em]%
+    }\\[0.1em]%
   % optional quote
   \ifthenelse{\isundefined{\@quote}}%
     {}%
@@ -164,7 +164,7 @@
       \begin{minipage}{\quotewidth}%
         \centering%
         \quotestyle{\@quote}%
-      \end{minipage}\hfill\null\\[0.5em]}}%
+      \end{minipage}\hfill\null\\[-0.5em]}}%
   \par}% to avoid weird spacing bug at the first section if no blank line is left after \maketitle
 
 
